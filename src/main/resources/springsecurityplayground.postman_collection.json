@@ -1,0 +1,132 @@
+{
+	"variables": [],
+	"info": {
+		"name": "springsecurityplayground",
+		"_postman_id": "8ef68e0f-c4c9-7d34-0503-877d2c523482",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "admin",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "localhost:8080/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"jelle.de.vleminck@gmail.com\",\r\n  \"password\": \"password\",\r\n  \"role\": {\r\n    \"name\": \"ADMIN\"\r\n  },\r\n  \"username\": \"jelledv\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST credentials for ACCESS token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "my-client-id",
+						"password": "my-secret-key",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "http://localhost:8080/api/oauth/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic bXktY2xpZW50LWlkOm15LXNlY3JldC1rZXk=",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "jelle.de.vleminck@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET unsecured resource",
+			"request": {
+				"url": "localhost:8080/api/unsecured",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET secured resource",
+			"request": {
+				"url": "localhost:8080/api/secured",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTkyOTI0MjQsInVzZXJfbmFtZSI6ImplbGxlLmRlLnZsZW1pbmNrQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkFETUlOIl0sImp0aSI6IjNkYTg2ZmI0LWFhZjUtNGYxYy1hMmQyLTNjZjMwOWI2YmNmOSIsImNsaWVudF9pZCI6Im15LWNsaWVudC1pZCIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdfQ.wljRdb7-PXBbuHyarurrVymEB1dIPKH6UUco9Wut5-Q",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "token key",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

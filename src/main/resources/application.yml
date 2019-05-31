@@ -1,0 +1,13 @@
+security:
+  jwt:
+    client-id: my-client-id
+    client-secret: my-secret-key
+    key-store: classpath:keystore.jks
+    key-store-password: test1234
+    key-pair-alias: springplayground
+    key-pair-password: test1234
+    public-key: classpath:public.txt
+
+server:
+  servlet:
+    context-path: /api
